@@ -60,6 +60,14 @@ namespace AracServisTakipSitesi.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            public string Ad { get; set; }
+            public string Adres { get; set; }
+            public string Sehir { get; set; }
+            public string PostaKodu { get; set; }
+            [Required]
+            public string TelefonNumara { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)

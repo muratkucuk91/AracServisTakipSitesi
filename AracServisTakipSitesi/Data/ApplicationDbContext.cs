@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using AracServisTakipSitesi.Models;
 
 namespace AracServisTakipSitesi.Data
 {
@@ -12,5 +13,9 @@ namespace AracServisTakipSitesi.Data
             : base(options)
         {
         }
+
+
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
+
     }
 }
