@@ -12,6 +12,8 @@ namespace AracServisTakipSitesi.Models
         public string Adres{ get; set; }
         public string Sehir { get; set; }
         public string PostaKodu { get; set; }
-    
-}
+        public string Telefon { get; set; }
+
+
+    }
 }
