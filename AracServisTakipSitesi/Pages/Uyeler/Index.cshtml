@@ -1,0 +1,71 @@
+﻿@page
+@model AracServisTakipSitesi.Pages.Uyeler.IndexModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+
+
+
+}
+<form>
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-info">Üye Listeleri</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-page="/Account/Register" asp-area="Identity" class="btn btn-info">
+                <i class="fas fa-plus"></i>&nbsp; Yeni Üye Ekle
+            </a>
+        </div>
+    </div>
+
+    <div class="border backgroundWhite">
+        <div>
+            <table class="table table-striped border">
+                <tr class="table-secondary">
+                    <th>
+                        @Html.DisplayNameFor(m => m.ApplicationUserList[0].Ad)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.ApplicationUserList[0].Telefon)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.ApplicationUserList[0].Email)
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+
+
+                @foreach (var item in Model.ApplicationUserList)
+
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => item.Ad)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Telefon)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Email)
+                        </td>
+                       
+                    </tr>
+                    
+                   
+
+
+
+
+                }
+
+
+
+            </table>
+            </div>
+        </div>
+    
+
+
+</form>
