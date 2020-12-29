@@ -17,5 +17,8 @@ namespace AracServisTakipSitesi.Data
 
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
 
+
+        public DbSet<AracServisTakipSitesi.Models.Uyeler> Uyeler { get; set; }
+
     }
 }
