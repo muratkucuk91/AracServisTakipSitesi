@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using AracServisTakipSitesi.Data;
+using System;
+using System.IO;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using AracServisTakipSitesi.Models;
+using AracServisTakipSitesi.ViewModes;
+using AracServisTakipSitesi.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace AracServisTakipSitesi.Controllers
 {

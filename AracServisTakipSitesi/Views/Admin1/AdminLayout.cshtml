@@ -25,13 +25,13 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-               <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AracServisTakipSitesi</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AracServisTakipSitesi</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-             
+
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -44,13 +44,7 @@
                         </li>
 
 
-                        <li class="nav-item">
-                            <a class="nav-item nav-link" asp-action="SignUp">Üye Ol</a>
-                        </li>
-                        <li class="nav-item">
-
-                            <a class="nav-item nav-link" asp-action="LogIn">Giriş yap</a>
-                        </li>
+                       
                     </ul>
                 </div>
             </div>
@@ -60,6 +54,18 @@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+
+        <div class="col-md-4">
+                <h3>Menü</h3>
+
+                <a class="btn btn-danger btn-block" asp-action="Claims" asp-controller="Admin">üye claims</a>
+
+                <a class="btn btn-danger btn-block" asp-action="Users" asp-controller="Admin">Üyeler</a>
+
+                <a class="btn btn-danger btn-block" asp-action="Roles" asp-controller="Admin">Roller</a>
+
+                <a class="btn btn-danger btn-block" asp-action="Logout" asp-controller="Member" asp-route-returnUrl="/Home/Index">Çıkış yap</a>
+            </div>
     </div>
 
     <footer class="border-top footer text-muted">
