@@ -1,1 +1,58 @@
-﻿<h1> hosgeldiniz></h1>
+﻿@model AracServisTakipSitesi.ViewModes.UserViewModel
+
+@{ ViewData["Title"] = "Index";
+    Layout = "~/Views/Member/_MemberLayout.cshtml"; }
+
+
+
+
+<div class="container backgroundWhite">
+    <div class="card">
+    
+        <div class="card-body">
+            <div class="row" >
+                <!--<div class="col-md-3">
+        <p>
+            <a>-->
+                @*asp-page="Create" asp-route-userId="@Model.Adres" class="btn btn-info form-control">
+        <i class="fas fa-plus"></i> &nbsp;*@
+                <!--Add New Car
+            </a>
+        </p>
+    </div>-->
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label asp-for="UserName"></label>
+                        </div>
+                        <div class="col-sm-8" style="padding-bottom:5px;">
+                            <input asp-for="UserName" disabled class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label asp-for="PhoneNumber"></label>
+                        </div>
+                        <div class="col-sm-8" style="padding-bottom:5px;">
+                            <input asp-for="PhoneNumber" disabled class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="padding-bottom:5px;">
+                            <label asp-for="Email"></label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input asp-for="Email" disabled class="form-control" />
+                        </div>
+                    </div>
+                </div>
+               
+
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+

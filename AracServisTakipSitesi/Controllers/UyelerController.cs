@@ -10,8 +10,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AracServisTakipSitesi.Models;
-using AracServisTakipSitesi.ViewModes;
-using AracServisTakipSitesi.Data;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace AracServisTakipSitesi.Controllers

@@ -1,4 +1,4 @@
-using AracServisTakipSitesi.Data;
+
 using AracServisTakipSitesi.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -42,6 +42,15 @@ namespace AracServisTakipSitesi
 
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddMvc();
+
+            services.ConfigureApplicationCookie(opts =>
+            {
+                opts.LoginPath = new PathString("/Home/Login");
+                opts.LogoutPath = new PathString("/Member/LogOut");
+                
+                opts.SlidingExpiration = true;
+              
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AracServisTakipSitesi</title>
+   
+
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AracServisTakipSitesi</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Privacy" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Uyeler" asp-action="Index">Üyeler</a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" asp-action="SignUp">Üye Ol</a>
+                        </li>
+                        <li class="nav-item">
+
+                            <a class="nav-item nav-link" asp-action="LogIn">Giriş yap</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    
+
+    <div class="container backgroundWhite">
+        <h2 class="text-info py-2">Car Record For Customer</h2>
+        <div class="card">
+            <div class="card-header bg-dark text-light ml-0 row container">
+                <div class="col-6">
+                    <i class="fas fa-car"></i>
+                </div>
+                @*<div class="col-6 text-right">
+                            @if (User.IsInRole(SD.AdminEndUser))
+                            {
+                <a asp-page="/Users/Index" class="btn btn-outline-info btn-sm">Back to Users</a>}
+                        </div>*@
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <!--<div class="col-md-3">
+                <p>
+                    <a>-->
+                    @*asp-page="Create" asp-route-userId="@Model.Adres" class="btn btn-info form-control">
+                    <i class="fas fa-plus"></i> &nbsp;*@
+                    <!--Add New Car
+                        </a>
+                    </p>
+                </div>-->
+                    <div class="col-md-8">
+                        @RenderBody()
+                    </div>
+                    <div class="col-md-4">
+
+                        <div class="row">
+
+                            <div class="col-sm-8" style="padding-bottom:5px;">
+                                <a class="btn btn-danger btn-block" asp-action="Claims" asp-controller="Member">Araçlar</a>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-8" style="padding-bottom:5px;">
+                                <a class="btn btn-danger btn-block" asp-action="PasswordChange" asp-controller="Member">Şifre Değiştirme</a>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-8" style="padding-bottom:5px;">
+                                <a class="btn btn-danger btn-block" asp-action="UserEdit" asp-controller="Member">Bilgi Günceleme</a>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-8" style="padding-bottom:5px;">
+                                <a class="btn btn-info btn-block" asp-action="Logout" asp-controller="Member" asp-route-returnUrl="/Home/Index">Çıkış yap</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+
+
+
+
+                <footer class="border-top footer text-muted">
+                    <div class="container">
+                        &copy; 2020 - AracServisTakipSitesi - <a asp-area="" asp-page="/Privacy">Privacy</a>
+                    </div>
+                </footer>
+
+                <environment include="Development">
+                    <script src="~/lib/jquery/dist/jquery.js"></script>
+                    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+                </environment>
+                <environment exclude="Development">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                            asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                            asp-fallback-test="window.jQuery"
+                            crossorigin="anonymous"
+                            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+                    </script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"
+                            asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                            crossorigin="anonymous"
+                            integrity="sha256-E/V4cWE4qvAeO5MOhjtGtqDzPndRO1LBk8lJ/PR7CA4=">
+                    </script>
+                </environment>
+                <script src="~/js/site.js" asp-append-version="true"></script>
+
+                @RenderSection("Scripts", required: false)
+</body>
+</html>

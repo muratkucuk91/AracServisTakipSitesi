@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using AracServisTakipSitesi.Models;
 
-namespace AracServisTakipSitesi.Data
+namespace AracServisTakipSitesi.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -13,10 +13,7 @@ namespace AracServisTakipSitesi.Data
             : base(options)
         {
         }
-
-
    
-
 
         public DbSet<AracServisTakipSitesi.Models.Uyeler> Uyeler { get; set; }
     }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using AracServisTakipSitesi.Data;
+
 using AracServisTakipSitesi.Models;
 using AracServisTakipSitesi.Utility;
 using Microsoft.AspNetCore.Authentication;
