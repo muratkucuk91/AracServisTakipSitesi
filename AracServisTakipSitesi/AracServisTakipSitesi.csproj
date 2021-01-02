@@ -107,11 +107,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
-    <Folder Include="Views\deneme\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\css\elegant-icons-style.css" />
     <None Include="wwwroot\css\font-awesome.css" />
     <None Include="wwwroot\css\font-awesome.min.css" />

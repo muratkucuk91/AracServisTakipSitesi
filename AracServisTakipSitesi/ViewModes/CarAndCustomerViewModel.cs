@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using AracServisTakipSitesi.Models;
 
-public class CarAndCustomerViewModel
+
+
+namespace AracServisTakipSitesi.ViewModes
+{
+    public class CarAndCustomerViewModel
     {
         public ApplicationUser UserObj { get; set; }
         public IEnumerable<Cars> Cars { get; set; }
     }
 
+}

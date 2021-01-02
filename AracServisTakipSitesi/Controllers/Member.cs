@@ -6,6 +6,7 @@ using Mapster;
 using AracServisTakipSitesi.ViewModes;
 using Microsoft.AspNetCore.Authorization;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace AracServisTakipSitesi.Controllers
 {
@@ -48,6 +49,10 @@ namespace AracServisTakipSitesi.Controllers
 
 
 
+        public IActionResult MemberList()
+        {
+            return View(userManager.Users.ToList());
+        }
 
 
 

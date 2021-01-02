@@ -9,7 +9,7 @@ namespace AracServisTakipSitesi.Models
 {
     public class Cars
     {
-        [ForeignKey("Id")]
+        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -29,8 +29,10 @@ namespace AracServisTakipSitesi.Models
 
 
 
-   
-       
+        [ForeignKey("UserId")]
+        public virtual ApplicationUser ApplicationUser { get; set; }
+
+
 
 
     }

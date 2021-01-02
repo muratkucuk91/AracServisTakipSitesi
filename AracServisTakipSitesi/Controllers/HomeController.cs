@@ -1,49 +1,52 @@
-﻿using AracServisTakipSitesi.Models;
-using AracServisTakipSitesi.ViewModes;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Security.Claims;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
+using AracServisTakipSitesi.Data;
+using AracServisTakipSitesi.Models;
+using AracServisTakipSitesi.Utility;
+using AracServisTakipSitesi.ViewModes;
 
 namespace AracServisTakipSitesi.Controllers
 {
-    public class HomeController : Controller
-    {
-        public UserManager<ApplicationUser> userManager { get; }
-        public SignInManager<ApplicationUser> signInManager { get; }
 
-        public HomeController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+
+    
+    public class HomeController : BaseController
+    {
+
+        public HomeController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager) : base(userManager, signInManager, roleManager)
         {
 
-            this.userManager = userManager;
-            this.signInManager = signInManager;
 
 
         }
         public IActionResult Index()
         {
-            //if (User.Identity.IsAuthenticated)
-            //{
-            //    return RedirectToAction("Index");
-            //}
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Member");
+            }
 
             return View();
         }
 
         public IActionResult LogIn(string ReturnUrl)
         {
-            //TempData["ReturnUrl"] = ReturnUrl;
+            TempData["ReturnUrl"] = ReturnUrl;
 
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> LogIn(LoginViewModel userlogin)
+        public async Task<IActionResult> LogIn(ApplicationUser userlogin)
         {
             if (ModelState.IsValid)
             {
@@ -112,7 +115,7 @@ namespace AracServisTakipSitesi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SignUp(UserViewModel userViewModel)
+        public async Task<IActionResult> SignUp(ApplicationUser db)
         {
             if (ModelState.IsValid)
             {
@@ -122,41 +125,41 @@ namespace AracServisTakipSitesi.Controllers
                 //    return View(userViewModel);
                 //}
 
-                ApplicationUser user = new ApplicationUser();
-                user.UserName = userViewModel.UserName;
-                user.Email = userViewModel.Email;
-                user.PhoneNumber = userViewModel.PhoneNumber;
+                ApplicationUser Db = new ApplicationUser();
+                db.UserName = db.UserName;
+                db.Email = db.Email;
+                db.PhoneNumber = db.PhoneNumber;
+                db.Sehir = db.Sehir;
+                db.PostaKodu = db.PostaKodu;
+                db.Password = db.Password;
+                db.Adres = db.Adres;
+                db.Id = db.Id;
 
-                IdentityResult result = await userManager.CreateAsync(user, userViewModel.Password);
+                IdentityResult result = await userManager.CreateAsync(db, db.Password);
 
                 if (result.Succeeded)
                 {
-                    //string confirmationToken = await userManager.GenerateEmailConfirmationTokenAsync(user);
-
-                    //string link = Url.Action("ConfirmEmail", "Home", new
-                    //{
-                    //    userId = user.Id,
-                    //    token = confirmationToken
-                    //}, protocol: HttpContext.Request.Scheme
-
-                    //);
-
-                    //Helper.EmailConfirmation.SendEmail(link, user.Email);
-
-                    return RedirectToAction("LogIn");
-                }
-                else
-                {
-
-                    foreach (IdentityError item in result.Errors)
+                    if (!await roleManager.RoleExistsAsync(SD.AdminEndUser))
                     {
-                        ModelState.AddModelError("", item.Description);
+                        await roleManager.CreateAsync(new IdentityRole(SD.AdminEndUser));
                     }
+                    if (!await roleManager.RoleExistsAsync(SD.CustomerEndUser))
+                    {
+                        await roleManager.CreateAsync(new IdentityRole(SD.CustomerEndUser));
+                    }
+
+                    
+
+
+                }
+                foreach (IdentityError item in result.Errors)
+                {
+                    ModelState.AddModelError("", item.Description);
                 }
             }
-                return View();
-            }
+            return RedirectToAction("LogIn", "Home");
 
+        }
             //public IActionResult ResetPassword()
             //{
             //    TempData["durum"] = null;
@@ -376,3 +379,4 @@ namespace AracServisTakipSitesi.Controllers
             //}
         }
     }
+

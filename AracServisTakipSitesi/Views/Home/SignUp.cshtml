@@ -1,12 +1,14 @@
-﻿@model AracServisTakipSitesi.ViewModes.UserViewModel
+﻿
+
+
+@model AracServisTakipSitesi.Models.ApplicationUser
 
 @{
     ViewData["Title"] = "SignUp";
 }
 
-<h1>SignUp</h1>
 
-<h4>UserViewModel</h4>
+
 <h3 class="text-info pt-2 pb-3"> Kayıt olmak için formu doldurunuz</h3>
 <hr />
 <div class="row">
@@ -65,12 +67,12 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-4">
-                        <label asp-for="City">Şehir</label>
+                        <label asp-for="Sehir">Şehir</label>
                     </div>
                     <div class="col-8">
-                        <input asp-for="City" class="form-control" />
+                        <input asp-for="Sehir" class="form-control" />
                     </div>
-                    <span asp-validation-for="City" class="text-danger"></span>
+                    <span asp-validation-for="Sehir" class="text-danger"></span>
                 </div>
 
             </div>
@@ -98,7 +100,7 @@
                 </div>
 
             </div>
-           
+
 
 
 
@@ -111,9 +113,7 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+            
         </form>
     </div>
 </div>
@@ -122,3 +122,19 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+<environment include="Development">
+    <script src="~/Identity/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+</environment>
+<environment exclude="Development">
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"
+            asp-fallback-src="~/Identity/lib/jquery-validation/dist/jquery.validate.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.validator"
+            crossorigin="anonymous"
+            integrity="sha384-rZfj/ogBloos6wzLGpPkkOr/gpkBNLZ6b6yLy4o+ok+t/SAKlL5mvXLr0OXNi1Hp"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.9/jquery.validate.unobtrusive.min.js"
+            asp-fallback-src="~/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.validator && window.jQuery.validator.unobtrusive"
+            crossorigin="anonymous"
+            integrity="sha384-ifv0TYDWxBHzvAk2Z0n8R434FL1Rlv/Av18DXE43N/1rvHyOG4izKst0f2iSLdds"></script>
+</environment>

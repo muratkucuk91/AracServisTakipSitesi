@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Session;
+using AracServisTakipSitesi.Data;
 
 namespace AracServisTakipSitesi
 {
@@ -38,10 +39,14 @@ namespace AracServisTakipSitesi
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 
+            services.AddIdentity<ApplicationUser, IdentityRole>(opts =>
+            {
+             
+            }).AddEntityFrameworkStores<ApplicationDbContext>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+           
 
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+              
             services.AddMvc();
 
             services.ConfigureApplicationCookie(opts =>
@@ -66,6 +71,8 @@ namespace AracServisTakipSitesi
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
+                endpoints.MapRazorPages();
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

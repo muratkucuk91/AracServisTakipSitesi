@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 using AracServisTakipSitesi.Models;
 using AracServisTakipSitesi.ViewModes;
 using AracServisTakipSitesi.Controllers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AracServisTakipSitesi.Controllers
 {
-    //[Authorize(Roles = "admin")]
+    //[Authorize(Roles = "Admin")]
     public class Admin1Controller : Controller
     {
         public UserManager<ApplicationUser> userManager { get; }
@@ -47,18 +48,7 @@ namespace AracServisTakipSitesi.Controllers
                 ApplicationUser user = await userManager.FindByEmailAsync(userlogin.Email);
                 if (user != null)
                 {
-                    //            if (await userManager.IsLockedOutAsync(user))
-                    //            {
-                    //                ModelState.AddModelError("", "Hesabınız bir süreliğine kilitlenmiştir. Lütfen daha sonra tekrar deneyiniz.");
-
-                    //                return View(userlogin);
-                    //            }
-
-                    //            if (userManager.IsEmailConfirmedAsync(user).Result == false)
-                    //            {
-                    //                ModelState.AddModelError("", "Email adresiniz onaylanmamıştır. Lütfen  epostanızı kontrol ediniz.");
-                    //                return View(userlogin);
-                    //            }
+                    
 
                     await signInManager.SignOutAsync();
                     Microsoft.AspNetCore.Identity.SignInResult result = await signInManager.PasswordSignInAsync(user, userlogin.Password, false, false);

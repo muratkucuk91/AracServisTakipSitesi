@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using AracServisTakipSitesi.Models;
 
-namespace AracServisTakipSitesi.Models
+namespace AracServisTakipSitesi.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
@@ -18,6 +18,8 @@ namespace AracServisTakipSitesi.Models
         public DbSet<AracServisTakipSitesi.Models.Uyeler> Uyeler { get; set; }
     
         public DbSet<Cars> Cars { get; set; }
+
+        public DbSet<ServiceType> ServiceType { get; set; }
     }
 }
 

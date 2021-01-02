@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using AracServisTakipSitesi.Utility
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <environment include="Development">
@@ -27,24 +29,63 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
 
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-action="Index" asp-controller="Cars">Araçlar</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-action="PasswordChange" asp-controller="Member">Şifre Değiştirme</a>
-                        </li>
+                        @if (User.IsInRole(SD.AdminEndUser))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="Index">Anasayfa</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-action="Index" asp-controller="ServiceTypes">Servisler</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-action="MemberList" asp-controller="Member">Üyeler</a>
+                            </li>
+
+                            
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-action="PasswordChange" asp-controller="Member">Şifre Değiştirme</a>
+                            </li>
 
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-action="UserEdit" asp-controller="Member">Bilgi Günceleme</a>
-                        </li>
-                        <li class="nav-item">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-action="UserEdit" asp-controller="Member">Bilgi Günceleme</a>
+                            </li>
 
-                            <a class="nav-link text-dark" asp-action="Logout" asp-controller="Member" asp-route-returnUrl="/Home/Index">Çıkış yap</a>
-                        </li>
+                            <li class="nav-item">
+
+                                <a class="nav-link text-dark" asp-action="Logout" asp-controller="Member" asp-route-returnUrl="/Home/Index">Çıkış yap</a>
+                            </li>
+                        }
+                        @if (User.IsInRole(SD.CustomerEndUser))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="Index">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-action="Index" asp-controller="Cars">Araçlar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-action="Index" asp-controller="Cars">Araçlar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-action="PasswordChange" asp-controller="Member">Şifre Değiştirme</a>
+                            </li>
+
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-action="UserEdit" asp-controller="Member">Bilgi Günceleme</a>
+                            </li>
+
+                            <li class="nav-item">
+
+                                <a class="nav-link text-dark" asp-action="Logout" asp-controller="Member" asp-route-returnUrl="/Home/Index">Çıkış yap</a>
+                            </li>
+                        }
+
+
+
                     </ul>
                 </div>
             </div>
@@ -54,7 +95,7 @@
 
 
     <div class="container">
-       
+
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
