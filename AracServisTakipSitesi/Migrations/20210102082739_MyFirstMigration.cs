@@ -40,6 +40,7 @@ namespace AracServisTakipSitesi.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
+                    Discriminator = table.Column<string>(nullable: false),
                     Ad = table.Column<string>(nullable: true),
                     Adres = table.Column<string>(nullable: true),
                     Sehir = table.Column<string>(nullable: true),
@@ -49,6 +50,25 @@ namespace AracServisTakipSitesi.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Cars",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    VIN = table.Column<string>(nullable: false),
+                    Marka = table.Column<string>(nullable: false),
+                    Model = table.Column<string>(nullable: false),
+                    Style = table.Column<string>(nullable: true),
+                    Yıl = table.Column<int>(nullable: false),
+                    Kilometre = table.Column<double>(nullable: false),
+                    Renk = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cars", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -232,6 +252,9 @@ namespace AracServisTakipSitesi.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Cars");
 
             migrationBuilder.DropTable(
                 name: "Uyeler");

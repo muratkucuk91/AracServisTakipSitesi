@@ -43,7 +43,14 @@ namespace AracServisTakipSitesi.Controllers
             //}
 
             return View(userViewModel);
+
         }
+
+
+
+
+
+
         public IActionResult UserEdit()
         {
             ApplicationUser user = userManager.FindByNameAsync(User.Identity.Name).Result;

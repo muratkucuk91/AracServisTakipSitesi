@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Session;
 
 namespace AracServisTakipSitesi
 {
@@ -29,7 +30,7 @@ namespace AracServisTakipSitesi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+           
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -45,9 +46,9 @@ namespace AracServisTakipSitesi
 
             services.ConfigureApplicationCookie(opts =>
             {
-                opts.LoginPath = new PathString("/Home/Login");
+                opts.LoginPath = new PathString("/Home/LogIn");
                 opts.LogoutPath = new PathString("/Member/LogOut");
-                
+            
                 opts.SlidingExpiration = true;
               
             });
@@ -59,7 +60,7 @@ namespace AracServisTakipSitesi
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
-
+          
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();

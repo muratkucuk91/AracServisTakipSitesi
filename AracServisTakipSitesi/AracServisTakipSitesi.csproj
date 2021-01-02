@@ -6,21 +6,180 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\css\elegant-icons-style.css" />
+    <Content Remove="wwwroot\css\font-awesome.css" />
+    <Content Remove="wwwroot\css\font-awesome.min.css" />
+    <Content Remove="wwwroot\css\line-icons.css" />
+    <Content Remove="wwwroot\css\style-responsive.css" />
+    <Content Remove="wwwroot\css\style.css" />
+    <Content Remove="wwwroot\fonts\ElegantIcons.eot" />
+    <Content Remove="wwwroot\fonts\ElegantIcons.svg" />
+    <Content Remove="wwwroot\fonts\ElegantIcons.ttf" />
+    <Content Remove="wwwroot\fonts\ElegantIcons.woff" />
+    <Content Remove="wwwroot\fonts\fontawesome-webfont.eot" />
+    <Content Remove="wwwroot\fonts\fontawesome-webfont.svg" />
+    <Content Remove="wwwroot\fonts\fontawesome-webfont.ttf" />
+    <Content Remove="wwwroot\fonts\fontawesome-webfont.woff" />
+    <Content Remove="wwwroot\fonts\FontAwesome.otf" />
+    <Content Remove="wwwroot\fonts\glyphicons-halflings-regular.eot" />
+    <Content Remove="wwwroot\fonts\glyphicons-halflings-regular.svg" />
+    <Content Remove="wwwroot\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Remove="wwwroot\fonts\glyphicons-halflings-regular.woff" />
+    <Content Remove="wwwroot\img\arrow-up.png" />
+    <Content Remove="wwwroot\img\avatar-mini.jpg" />
+    <Content Remove="wwwroot\img\avatar-mini2.jpg" />
+    <Content Remove="wwwroot\img\avatar-mini3.jpg" />
+    <Content Remove="wwwroot\img\avatar-mini4.jpg" />
+    <Content Remove="wwwroot\img\avatar1.jpg" />
+    <Content Remove="wwwroot\img\avatar1_small.jpg" />
+    <Content Remove="wwwroot\img\bg-1.jpg" />
+    <Content Remove="wwwroot\img\chart-texture.jpg" />
+    <Content Remove="wwwroot\img\chat-avatar.jpg" />
+    <Content Remove="wwwroot\img\chat-avatar2.jpg" />
+    <Content Remove="wwwroot\img\customSelect-arrow.gif" />
+    <Content Remove="wwwroot\img\geekslabs.png" />
+    <Content Remove="wwwroot\img\Germany.png" />
+    <Content Remove="wwwroot\img\icons\line-icon-c.png" />
+    <Content Remove="wwwroot\img\icons\line-icon-hover.png" />
+    <Content Remove="wwwroot\img\icons\line-icon.png" />
+    <Content Remove="wwwroot\img\icons\search-line-icon.png" />
+    <Content Remove="wwwroot\img\icons\social.png" />
+    <Content Remove="wwwroot\img\icons\weather-hover.png" />
+    <Content Remove="wwwroot\img\icons\weather.png" />
+    <Content Remove="wwwroot\img\India.png" />
+    <Content Remove="wwwroot\img\left-arrow.png" />
+    <Content Remove="wwwroot\img\logo-big.png" />
+    <Content Remove="wwwroot\img\mail-avatar.jpg" />
+    <Content Remove="wwwroot\img\profile-avatar.jpg" />
+    <Content Remove="wwwroot\img\profile-widget-avatar.jpg" />
+    <Content Remove="wwwroot\img\right-arrow.png" />
+    <Content Remove="wwwroot\img\Russia.png" />
+    <Content Remove="wwwroot\img\sample-img-1.jpg" />
+    <Content Remove="wwwroot\img\sample-img-2.png" />
+    <Content Remove="wwwroot\img\sample-img-3.png" />
+    <Content Remove="wwwroot\img\search-icon.jpg" />
+    <Content Remove="wwwroot\img\Spain.png" />
+    <Content Remove="wwwroot\img\user.jpg" />
+    <Content Remove="wwwroot\img\user22.png" />
+    <Content Remove="wwwroot\lib\twitter-bootstrap\fonts\ElegantIcons.eot" />
+    <Content Remove="wwwroot\lib\twitter-bootstrap\fonts\ElegantIcons.svg" />
+    <Content Remove="wwwroot\lib\twitter-bootstrap\fonts\ElegantIcons.ttf" />
+    <Content Remove="wwwroot\lib\twitter-bootstrap\fonts\ElegantIcons.woff" />
+    <Content Remove="wwwroot\lib\twitter-bootstrap\fonts\fontawesome-webfont.eot" />
+    <Content Remove="wwwroot\lib\twitter-bootstrap\fonts\fontawesome-webfont.svg" />
+    <Content Remove="wwwroot\lib\twitter-bootstrap\fonts\fontawesome-webfont.ttf" />
+    <Content Remove="wwwroot\lib\twitter-bootstrap\fonts\fontawesome-webfont.woff" />
+    <Content Remove="wwwroot\lib\twitter-bootstrap\fonts\FontAwesome.otf" />
+    <Content Remove="wwwroot\lib\twitter-bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Remove="wwwroot\lib\twitter-bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Remove="wwwroot\lib\twitter-bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Remove="wwwroot\lib\twitter-bootstrap\fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\lib\twitter-bootstrap\fonts\ElegantIcons.eot" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\twitter-bootstrap\fonts\ElegantIcons.svg" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\twitter-bootstrap\fonts\ElegantIcons.ttf" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\twitter-bootstrap\fonts\ElegantIcons.woff" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\twitter-bootstrap\fonts\fontawesome-webfont.eot" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\twitter-bootstrap\fonts\fontawesome-webfont.svg" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\twitter-bootstrap\fonts\fontawesome-webfont.ttf" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\twitter-bootstrap\fonts\fontawesome-webfont.woff" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\twitter-bootstrap\fonts\FontAwesome.otf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="bootstrap" Version="3.0.0" />
+    <PackageReference Include="jQuery" Version="3.5.1" />
     <PackageReference Include="Mapster" Version="7.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.10" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.10" />
+  
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="Modernizr" Version="2.8.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\" />
+    <Folder Include="Migrations\" />
     <Folder Include="Views\deneme\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\elegant-icons-style.css" />
+    <None Include="wwwroot\css\font-awesome.css" />
+    <None Include="wwwroot\css\font-awesome.min.css" />
+    <None Include="wwwroot\css\line-icons.css" />
+    <None Include="wwwroot\css\style-responsive.css" />
+    <None Include="wwwroot\css\style.css" />
+    <None Include="wwwroot\fonts\ElegantIcons.eot" />
+    <None Include="wwwroot\fonts\ElegantIcons.svg" />
+    <None Include="wwwroot\fonts\ElegantIcons.ttf" />
+    <None Include="wwwroot\fonts\ElegantIcons.woff" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.eot" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.ttf" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.woff" />
+    <None Include="wwwroot\fonts\FontAwesome.otf" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="wwwroot\img\arrow-up.png" />
+    <None Include="wwwroot\img\avatar-mini.jpg" />
+    <None Include="wwwroot\img\avatar-mini2.jpg" />
+    <None Include="wwwroot\img\avatar-mini3.jpg" />
+    <None Include="wwwroot\img\avatar-mini4.jpg" />
+    <None Include="wwwroot\img\avatar1.jpg" />
+    <None Include="wwwroot\img\avatar1_small.jpg" />
+    <None Include="wwwroot\img\bg-1.jpg" />
+    <None Include="wwwroot\img\chart-texture.jpg" />
+    <None Include="wwwroot\img\chat-avatar.jpg" />
+    <None Include="wwwroot\img\chat-avatar2.jpg" />
+    <None Include="wwwroot\img\customSelect-arrow.gif" />
+    <None Include="wwwroot\img\geekslabs.png" />
+    <None Include="wwwroot\img\Germany.png" />
+    <None Include="wwwroot\img\icons\line-icon-c.png" />
+    <None Include="wwwroot\img\icons\line-icon-hover.png" />
+    <None Include="wwwroot\img\icons\line-icon.png" />
+    <None Include="wwwroot\img\icons\search-line-icon.png" />
+    <None Include="wwwroot\img\icons\social.png" />
+    <None Include="wwwroot\img\icons\weather-hover.png" />
+    <None Include="wwwroot\img\icons\weather.png" />
+    <None Include="wwwroot\img\India.png" />
+    <None Include="wwwroot\img\left-arrow.png" />
+    <None Include="wwwroot\img\logo-big.png" />
+    <None Include="wwwroot\img\mail-avatar.jpg" />
+    <None Include="wwwroot\img\profile-avatar.jpg" />
+    <None Include="wwwroot\img\profile-widget-avatar.jpg" />
+    <None Include="wwwroot\img\right-arrow.png" />
+    <None Include="wwwroot\img\Russia.png" />
+    <None Include="wwwroot\img\sample-img-1.jpg" />
+    <None Include="wwwroot\img\sample-img-2.png" />
+    <None Include="wwwroot\img\sample-img-3.png" />
+    <None Include="wwwroot\img\search-icon.jpg" />
+    <None Include="wwwroot\img\Spain.png" />
+    <None Include="wwwroot\img\user.jpg" />
+    <None Include="wwwroot\img\user22.png" />
+    <None Include="wwwroot\lib\twitter-bootstrap\fonts\ElegantIcons.eot" />
+    <None Include="wwwroot\lib\twitter-bootstrap\fonts\ElegantIcons.svg" />
+    <None Include="wwwroot\lib\twitter-bootstrap\fonts\ElegantIcons.ttf" />
+    <None Include="wwwroot\lib\twitter-bootstrap\fonts\ElegantIcons.woff" />
+    <None Include="wwwroot\lib\twitter-bootstrap\fonts\fontawesome-webfont.eot" />
+    <None Include="wwwroot\lib\twitter-bootstrap\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\lib\twitter-bootstrap\fonts\fontawesome-webfont.ttf" />
+    <None Include="wwwroot\lib\twitter-bootstrap\fonts\fontawesome-webfont.woff" />
+    <None Include="wwwroot\lib\twitter-bootstrap\fonts\FontAwesome.otf" />
+    <None Include="wwwroot\lib\twitter-bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="wwwroot\lib\twitter-bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\lib\twitter-bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="wwwroot\lib\twitter-bootstrap\fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
 
 </Project>
