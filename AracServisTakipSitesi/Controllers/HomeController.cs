@@ -13,27 +13,44 @@ using AracServisTakipSitesi.Data;
 using AracServisTakipSitesi.Models;
 using AracServisTakipSitesi.Utility;
 using AracServisTakipSitesi.ViewModes;
+using System.Linq;
+using Microsoft.AspNetCore.Identity.UI.V3.Pages.Account.Internal;
 
 namespace AracServisTakipSitesi.Controllers
 {
 
 
     
-    public class HomeController : BaseController
+    public class HomeController : Controller
     {
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly ILogger<LoginModel> _logger;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly ApplicationDbContext _db;
+        //protected ApplicationUser CurrentUser => userManager.FindByNameAsync(User.Identity.Name).Result;
 
-        public HomeController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager) : base(userManager, signInManager, roleManager)
+        public HomeController(
+            UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager,
+          ILogger<LoginModel> logger,
+            RoleManager<IdentityRole> roleManager,
+            ApplicationDbContext db)
         {
-
-
-
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _logger = logger;
+            _db = db;
+            _roleManager = roleManager;
         }
+
+
         public IActionResult Index()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Member");
-            }
+            //if (User.Identity.IsAuthenticated)
+            //{
+            //    return RedirectToAction("Index","Home");
+            //}
 
             return View();
         }
@@ -46,28 +63,16 @@ namespace AracServisTakipSitesi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> LogIn(ApplicationUser userlogin)
+        public async Task<IActionResult> LogIn(ApplicationUser Input)
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser user = await userManager.FindByEmailAsync(userlogin.Email);
-                if (user != null)
+                var user = _db.Users.FirstOrDefault(u => u.Email == Input.Email);
+                if (user != null )
                 {
-                    //            if (await userManager.IsLockedOutAsync(user))
-                    //            {
-                    //                ModelState.AddModelError("", "Hesabınız bir süreliğine kilitlenmiştir. Lütfen daha sonra tekrar deneyiniz.");
+                    await _signInManager.SignOutAsync();
+                    Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(user, Input.Password, false, false);
 
-                    //                return View(userlogin);
-                    //            }
-
-                    //            if (userManager.IsEmailConfirmedAsync(user).Result == false)
-                    //            {
-                    //                ModelState.AddModelError("", "Email adresiniz onaylanmamıştır. Lütfen  epostanızı kontrol ediniz.");
-                    //                return View(userlogin);
-                    //            }
-
-                    await signInManager.SignOutAsync();
-                    Microsoft.AspNetCore.Identity.SignInResult result = await signInManager.PasswordSignInAsync(user, userlogin.Password, false, false);
 
                     if (result.Succeeded)
                     {
@@ -81,75 +86,58 @@ namespace AracServisTakipSitesi.Controllers
                         return RedirectToAction("Index", "Member");
                     }
 
+
                 }
                 else
                 {
-                    //                await userManager.AccessFailedAsync(user);
 
-                    //                int fail = await userManager.GetAccessFailedCountAsync(user);
-                    //                ModelState.AddModelError("", $" {fail} kez başarısız giriş.");
-                    //                if (fail == 3)
-                    //                {
-                    //                    await userManager.SetLockoutEndDateAsync(user, new System.DateTimeOffset(DateTime.Now.AddMinutes(20)));
-
-                    //                    ModelState.AddModelError("", "Hesabınız 3 başarısız girişten dolayı 20 dakika süreyle kitlenmiştir. Lütfen daha sonra tekrar deneyiniz.");
-                    //                }
-                    //                else
-                    //                {
                     ModelState.AddModelError("", "Email adresiniz veya şifreniz yanlış.");
-                    //                }
-                    //            }
-                    //        }
-                    //        else
-                    //        {
-                    //            ModelState.AddModelError("", "Bu email adresine kayıtlı kullanıcı bulunamamıştır.");
-                }
-            }
 
-            return View(userlogin);
-        }
+                }
+                }
+                return View();
+            }
 
         public IActionResult SignUp()
         {
             return View();
         }
 
+
         [HttpPost]
         public async Task<IActionResult> SignUp(ApplicationUser db)
         {
             if (ModelState.IsValid)
             {
-                //if (userManager.Users.Any(u => u.PhoneNumber == userViewModel.PhoneNumber))
-                //{
-                //    ModelState.AddModelError("", "Bu telefon numarası kayıtlıdır.");
-                //    return View(userViewModel);
-                //}
 
-                ApplicationUser Db = new ApplicationUser();
-                db.UserName = db.UserName;
-                db.Email = db.Email;
-                db.PhoneNumber = db.PhoneNumber;
-                db.Sehir = db.Sehir;
-                db.PostaKodu = db.PostaKodu;
-                db.Password = db.Password;
-                db.Adres = db.Adres;
-                db.Id = db.Id;
+                var user = new ApplicationUser
+                {
 
-                IdentityResult result = await userManager.CreateAsync(db, db.Password);
+                    UserName = db.UserName,
+                    Email = db.Email,
+                    PhoneNumber = db.PhoneNumber,
+                    Sehir = db.Sehir,
+                    PostaKodu = db.PostaKodu,
+                    Password = db.Password,
+                    Adres = db.Adres,
+                    Ad = db.Ad,
+                };
+                var result = await _userManager.CreateAsync(user, db.Password);
 
                 if (result.Succeeded)
                 {
-                    if (!await roleManager.RoleExistsAsync(SD.AdminEndUser))
+                    if (!await _roleManager.RoleExistsAsync(SD.AdminEndUser))
                     {
-                        await roleManager.CreateAsync(new IdentityRole(SD.AdminEndUser));
+                        await _roleManager.CreateAsync(new IdentityRole(SD.AdminEndUser));
                     }
-                    if (!await roleManager.RoleExistsAsync(SD.CustomerEndUser))
+                    if (!await _roleManager.RoleExistsAsync(SD.CustomerEndUser))
                     {
-                        await roleManager.CreateAsync(new IdentityRole(SD.CustomerEndUser));
+                        await _roleManager.CreateAsync(new IdentityRole(SD.CustomerEndUser));
                     }
+                   
 
-                    
-
+                        await _userManager.AddToRoleAsync(user, SD.CustomerEndUser);
+               
 
                 }
                 foreach (IdentityError item in result.Errors)

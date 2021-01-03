@@ -1,9 +1,14 @@
 ﻿
-@model IEnumerable<AracServisTakipSitesi.Models.ApplicationUser>
+@model List<ApplicationUser>
+
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Member/_MemberLayout.cshtml";
-}
+    
+        ViewData["Title"] = "MemberList";
+        Layout = "~/Views/Member/_MemberLayout.cshtml";
+    }
+
+
+
 
 <form>
     <div class="row">
@@ -20,53 +25,48 @@
             <table class="table table-striped border">
                 <tr class="table-secondary">
                     <th>
-                        @Html.DisplayNameFor(m => m.Ad)
+                        UserName
                     </th>
                     <th>
-                        @Html.DisplayNameFor(m => m.Telefon)
+                       PhoneNumber
                     </th>
                     <th>
-                        @Html.DisplayNameFor(m => m.Email)
+                        Email
                     </th>
                     <th></th>
                     <th></th>
                 </tr>
 
 
+
                 @foreach (var item in Model)
-
                 {
-            <tr>
-                <td>
-                    @Html.DisplayFor(m => item.UserName)
-                </td>
-                <td>
-                    @Html.DisplayFor(m => item.PhoneNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(m => item.Email)
-                </td>
-
-                <td>
-                    <a asp-action="Index" asp-controller="Cars" asp-route-userId="@item.Id" style="text-decoration:none;">
-                        <img src="~/images/car.png" width="40" /> &nbsp; View Cars
-                    </a>
-                </td>
-                <td>
-                    <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@item.Id">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                    <a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@item.Id">
-                        <i class="fas fa-trash-alt"></i>
-                    </a>
-                </td>
-            </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => item.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.PhoneNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Email)
+                        </td>
+                        <td>
+                            <a asp-action="Index" asp-controller="Cars" style="text-decoration:none;">
+                                <img src="~/images/car.png" width="40" /> &nbsp; View Cars
+                            </a>
+                        </td>
+                        <td>
+                            <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@item.Id">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@item.Id">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </td>
 
 
-
-
-
-
+                    </tr>
                 }
 
 

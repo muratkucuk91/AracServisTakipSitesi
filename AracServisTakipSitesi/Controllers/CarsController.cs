@@ -23,6 +23,7 @@ namespace AracServisTakipSitesi.Controllers
         [BindProperty]
         public Cars Cars { get; set; }
 
+
         public CarsController(ApplicationDbContext context)
         {
             _context = context;
@@ -32,18 +33,18 @@ namespace AracServisTakipSitesi.Controllers
         public async Task<IActionResult> Index(string userId = null)
         {
 
-            Cars = new Cars();
+        
             if (userId == null)
             {
                 var claimsIdentity = (ClaimsIdentity)User.Identity;
                 var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
                 userId = claim.Value;
             }
-
+          
 
             CarAndCustVM = new CarAndCustomerViewModel()
             {
-                //Cars = await _context.Cars.Where(c => c.UserId == userId).ToListAsync(),
+                Cars = await _context.Cars.Where(c => c.UserId == userId).ToListAsync(),
                 UserObj = await _context.ApplicationUser.FirstOrDefaultAsync(u => u.Id == userId)
             };
 
@@ -78,7 +79,7 @@ namespace AracServisTakipSitesi.Controllers
                 var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
                 userId = claim.Value;
             }
-            //Cars. = userId;
+            Cars.UserId = userId;
             return View();
         }
 
@@ -87,15 +88,15 @@ namespace AracServisTakipSitesi.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,VIN,Marka,Model,Style,Yıl,Kilometre,Renk,UserId")] Cars cars)
+        public async Task<IActionResult> Create( Cars cars)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(cars);
+                _context.Add(Cars);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
             }
-            return View(cars);
+           
+            return RedirectToAction("Index", new { userId = Cars.UserId });
         }
 
         // GET: Cars/Edit/5

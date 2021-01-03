@@ -27,7 +27,7 @@ namespace AracServisTakipSitesi.Models
         public double Kilometre { get; set; }
         public string Renk { get; set; }
 
-
+        public string UserId { get; set; }
 
         [ForeignKey("UserId")]
         public virtual ApplicationUser ApplicationUser { get; set; }

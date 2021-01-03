@@ -1,8 +1,8 @@
-﻿@model AracServisTakipSitesi.Models.Uyeler
+﻿@model AracServisTakipSitesi.Models.ApplicationUser
 
 @{
     ViewData["Title"] = "Delete";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Member/_MemberLayout.cshtml";
 }
 
 <h1>Delete</h1>
@@ -17,6 +17,12 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Ad)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Adres)
@@ -41,6 +47,12 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Telefon)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
         </dd>
     </dl>
     

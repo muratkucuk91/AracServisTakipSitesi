@@ -31,15 +31,20 @@ namespace AracServisTakipSitesi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-           
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddRazorPages();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
-
-            services.AddIdentity<ApplicationUser, IdentityRole>(opts =>
+            
+            services.AddIdentity<IdentityUser, IdentityRole>(opts =>
             {
              
             }).AddEntityFrameworkStores<ApplicationDbContext>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
@@ -65,7 +70,7 @@ namespace AracServisTakipSitesi
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
-          
+            app.UseCookiePolicy();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();

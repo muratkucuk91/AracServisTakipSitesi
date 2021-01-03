@@ -20,6 +20,11 @@ namespace AracServisTakipSitesi.Data
         public DbSet<Cars> Cars { get; set; }
 
         public DbSet<ServiceType> ServiceType { get; set; }
+
+        public DbSet<ServiceShoppingCart> ServiceShoppingCart { get; set; }
+        public DbSet<ServiceHeader> ServiceHeader { get; set; }
+        public DbSet<ServiceDetails> ServiceDetails { get; set; }
+
     }
 }
 
